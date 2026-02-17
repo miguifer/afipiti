@@ -1,0 +1,10 @@
+export { default as Navbar } from './Navbar';
+export { default as Footer } from './Footer';
+export { default as Hero } from './Hero';
+export { default as ObraCard } from './ObraCard';
+export { default as GalleryGrid } from './GalleryGrid';
+export { default as AboutSection } from './AboutSection';
+export { default as ContactSection } from './ContactSection';
+export { default as Breadcrumb } from './Breadcrumb';
+export { default as ObraDetail } from './ObraDetail';
+export { default as RelatedObras } from './RelatedObras';
