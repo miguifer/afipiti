@@ -1,11 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface NavbarProps {
   isDetailPage?: boolean;
 }
+
+const navItems = [
+  { href: "#inicio", label: "Inicio" },
+  { href: "#galeria", label: "Galería" },
+  { href: "#sobre-mi", label: "Sobre Mí" },
+  { href: "#contacto", label: "Contacto" },
+];
 
 export default function Navbar({ isDetailPage = false }: NavbarProps) {
   const linkPrefix = isDetailPage ? "/" : "";
@@ -13,73 +20,119 @@ export default function Navbar({ isDetailPage = false }: NavbarProps) {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
-  
+
+  // Bloquear scroll del body cuando el menú está abierto
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="font-playfair text-2xl font-semibold text-black">
-            Alejandro Vega
+          <Link href="/" className="font-playfair text-2xl font-semibold text-black z-50 relative">
+            Ángel Fernández
           </Link>
+
+          {/* Desktop menu */}
           <div className="hidden md:flex gap-8 text-sm">
-            <Link href={`${linkPrefix}#inicio`} className="hover:text-gray-600 transition-colors">Inicio</Link>
-            <Link href={`${linkPrefix}#galeria`} className="hover:text-gray-600 transition-colors">Galería</Link>
-            <Link href={`${linkPrefix}#sobre-mi`} className="hover:text-gray-600 transition-colors">Sobre Mí</Link>
-            <Link href={`${linkPrefix}#servicios`} className="hover:text-gray-600 transition-colors">Servicios</Link>
-            <Link href={`${linkPrefix}#contacto`} className="hover:text-gray-600 transition-colors">Contacto</Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={`${linkPrefix}${item.href}`}
+                className="hover:text-gray-600 transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
-          {/* Botón hamburguesa móvil */}
+
+          {/* Botón hamburguesa */}
           <button
             onClick={toggleMenu}
-            className="md:hidden w-10 h-10 flex items-center justify-center"
-            aria-label="Abrir menú"
+            className="md:hidden w-10 h-10 flex items-center justify-center z-50 relative"
+            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
-            <i className="fa-solid fa-bars text-xl"></i>
+            <div className="w-5 h-4 relative flex flex-col justify-between">
+              <span
+                className={`block h-0.5 w-full bg-black rounded-full transform transition-all duration-300 ease-out origin-center ${
+                  isMenuOpen ? "rotate-45 translate-y-[7px]" : ""
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-full bg-black rounded-full transition-all duration-300 ease-out ${
+                  isMenuOpen ? "opacity-0 scale-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`block h-0.5 w-full bg-black rounded-full transform transition-all duration-300 ease-out origin-center ${
+                  isMenuOpen ? "-rotate-45 -translate-y-[7px]" : ""
+                }`}
+              />
+            </div>
           </button>
         </div>
       </nav>
 
-      {/* Overlay */}
+      {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-black/50 z-50 transition-opacity duration-300 md:hidden ${
-          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={closeMenu}
-      />
-
-      {/* Offcanvas Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-72 bg-white z-50 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-500 ease-out ${
+          isMenuOpen ? "visible" : "invisible"
         }`}
       >
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-8">
-            <span className="font-playfair text-xl font-semibold">Menú</span>
-            <button
-              onClick={closeMenu}
-              className="w-10 h-10 flex items-center justify-center"
-              aria-label="Cerrar menú"
-            >
-              <i className="fa-solid fa-xmark text-xl"></i>
-            </button>
+        {/* Background overlay con blur */}
+        <div
+          className={`absolute inset-0 bg-white/95 backdrop-blur-lg transition-opacity duration-500 ${
+            isMenuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={closeMenu}
+        />
+
+        {/* Menu content */}
+        <div className="relative h-full flex flex-col justify-center items-center">
+          <nav className="flex flex-col items-center gap-2">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.href}
+                href={`${linkPrefix}${item.href}`}
+                onClick={closeMenu}
+                className={`text-4xl font-medium text-black hover:text-gray-500 transition-all duration-300 py-3 px-6 transform ${
+                  isMenuOpen
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-4"
+                }`}
+                style={{
+                  transitionDelay: isMenuOpen ? `${index * 75 + 100}ms` : "0ms",
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div
+            className={`absolute bottom-24 left-1/2 -translate-x-1/2 transition-all duration-700 delay-300 ${
+              isMenuOpen ? "w-16 opacity-100" : "w-0 opacity-0"
+            }`}
+          >
+            <div className="h-px bg-gray-300" />
           </div>
-          <div className="flex flex-col gap-6 text-lg">
-            <Link href={`${linkPrefix}#inicio`} onClick={closeMenu} className="hover:text-gray-600 transition-colors py-2 border-b border-gray-100">
-              <i className="fa-solid fa-home w-6 mr-3"></i>Inicio
-            </Link>
-            <Link href={`${linkPrefix}#galeria`} onClick={closeMenu} className="hover:text-gray-600 transition-colors py-2 border-b border-gray-100">
-              <i className="fa-solid fa-images w-6 mr-3"></i>Galería
-            </Link>
-            <Link href={`${linkPrefix}#sobre-mi`} onClick={closeMenu} className="hover:text-gray-600 transition-colors py-2 border-b border-gray-100">
-              <i className="fa-solid fa-user w-6 mr-3"></i>Sobre Mí
-            </Link>
-            <Link href={`${linkPrefix}#servicios`} onClick={closeMenu} className="hover:text-gray-600 transition-colors py-2 border-b border-gray-100">
-              <i className="fa-solid fa-palette w-6 mr-3"></i>Servicios
-            </Link>
-            <Link href={`${linkPrefix}#contacto`} onClick={closeMenu} className="hover:text-gray-600 transition-colors py-2 border-b border-gray-100">
-              <i className="fa-solid fa-envelope w-6 mr-3"></i>Contacto
-            </Link>
+
+          {/* Additional info */}
+          <div
+            className={`absolute bottom-12 flex gap-8 transition-all duration-500 ${
+              isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            }`}
+            style={{ transitionDelay: isMenuOpen ? "400ms" : "0ms" }}
+          >
+            <span className="text-sm text-gray-500">Arte & Pintura</span>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="aspect-square bg-gray-200 relative overflow-hidden">
             <Image
-              src="/images.webp"
+              src="/5FDL4Z7HCBFZ5M3FZBAW363M5A.avif"
               alt="El artista en su estudio"
               fill
               className="object-cover"
@@ -21,7 +21,7 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Soy Alejandro Vega, artista y pintor con más de 15 años de experiencia
+                Soy Ángel Fernández, artista y pintor con más de 15 años de experiencia
                 creando obras que capturan la belleza del mundo que nos rodea.
               </p>
               <p>

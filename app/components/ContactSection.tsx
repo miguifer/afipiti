@@ -14,7 +14,7 @@ export default function ContactSection() {
               ¿Tienes un proyecto en mente?
             </h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              Estaré encantado de escuchar tus ideas y crear algo especial para ti. 
+              Estaré encantado de escuchar tus ideas y crear algo especial para ti.
               No dudes en contactarme para consultas, encargos o colaboraciones.
             </p>
             <div className="space-y-4">
@@ -50,34 +50,34 @@ export default function ContactSection() {
           <form className="space-y-6">
             <div>
               <label htmlFor="nombre" className="block text-sm mb-2">Nombre</label>
-              <input 
-                type="text" 
-                id="nombre" 
+              <input
+                type="text"
+                id="nombre"
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
                 placeholder="Tu nombre"
               />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm mb-2">Email</label>
-              <input 
-                type="email" 
-                id="email" 
+              <input
+                type="email"
+                id="email"
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
                 placeholder="tu@email.com"
               />
             </div>
             <div>
               <label htmlFor="mensaje" className="block text-sm mb-2">Mensaje</label>
-              <textarea 
-                id="mensaje" 
+              <textarea
+                id="mensaje"
                 rows={4}
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors resize-none"
                 placeholder="Cuéntame sobre tu proyecto..."
               ></textarea>
             </div>
-            <button 
+            <button
               type="submit"
-              className="w-full px-8 py-4 bg-black text-white hover:bg-gray-800 transition-colors"
+              className="w-full px-8 py-4 bg-black text-white hover:bg-gray-800 hover:cursor-pointer transition-colors"
             >
               Enviar Mensaje
             </button>

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${obra.titulo} | Alejandro Vega`,
+    title: `${obra.titulo} | Ángel Fernández`,
     description: obra.descripcion.substring(0, 160),
   };
 }
