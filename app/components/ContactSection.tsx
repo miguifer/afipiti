@@ -1,4 +1,48 @@
+'use client';
+
+import { useState, FormEvent } from 'react';
+
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    mensaje: '',
+  });
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al enviar el mensaje');
+      }
+
+      setStatus('success');
+      setFormData({ nombre: '', email: '', mensaje: '' });
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage(
+        error instanceof Error ? error.message : 'Error al enviar el mensaje'
+      );
+    }
+  };
+
   return (
     <section id="contacto" className="py-24 px-6 bg-gray-50">
       <div className="max-w-4xl mx-auto">
@@ -47,12 +91,25 @@ export default function ContactSection() {
               </a>
             </div>
           </div>
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {status === 'success' && (
+              <div className="p-4 bg-green-50 border border-green-200 text-green-800">
+                ¡Mensaje enviado correctamente! Te responderé pronto.
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="p-4 bg-red-50 border border-red-200 text-red-800">
+                {errorMessage}
+              </div>
+            )}
             <div>
               <label htmlFor="nombre" className="block text-sm mb-2">Nombre</label>
               <input
                 type="text"
                 id="nombre"
+                required
+                value={formData.nombre}
+                onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
                 placeholder="Tu nombre"
               />
@@ -62,6 +119,9 @@ export default function ContactSection() {
               <input
                 type="email"
                 id="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
                 placeholder="tu@email.com"
               />
@@ -71,15 +131,19 @@ export default function ContactSection() {
               <textarea
                 id="mensaje"
                 rows={4}
+                required
+                value={formData.mensaje}
+                onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors resize-none"
                 placeholder="Cuéntame sobre tu proyecto..."
               ></textarea>
             </div>
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-black text-white hover:bg-gray-800 hover:cursor-pointer transition-colors"
+              disabled={status === 'loading'}
+              className="w-full px-8 py-4 bg-black text-white hover:bg-gray-800 hover:cursor-pointer transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Enviar Mensaje
+              {status === 'loading' ? 'Enviando...' : 'Enviar Mensaje'}
             </button>
           </form>
         </div>
