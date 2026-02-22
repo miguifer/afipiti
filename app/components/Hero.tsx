@@ -4,7 +4,7 @@ export default function Hero() {
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <p className="text-black uppercase tracking-[0.3em] text-sm mb-6">Artista & Pintor</p>
         <h1 className="font-playfair text-5xl md:text-7xl font-semibold mb-6 leading-tight">
-          Angel Fernández
+          Ángel Fernández
         </h1>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
           Creando arte que emociona y transforma espacios. Especializado en pintura al óleo,

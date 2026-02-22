@@ -16,7 +16,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Angel Fernández | Artista & Pintor",
+  title: "Ángel Fernández | Artista & Pintor",
   description: "Artista profesional especializado en pintura al óleo, acuarela y técnicas mixtas. Retratos personalizados, murales y obras de arte únicas.",
 };
 
