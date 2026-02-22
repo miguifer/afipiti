@@ -6,6 +6,10 @@ interface RelatedObrasProps {
 }
 
 export default function RelatedObras({ obras }: RelatedObrasProps) {
+  if (!obras || obras.length === 0) {
+    return null;
+  }
+
   return (
     <section className="max-w-6xl mx-auto px-6 mt-24">
       <div className="text-center mb-12">
