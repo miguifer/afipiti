@@ -7,7 +7,7 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="aspect-square bg-gray-200 relative overflow-hidden">
             <Image
-              src="/5FDL4Z7HCBFZ5M3FZBAW363M5A.avif"
+              src="/logo.jpg"
               alt="El artista en su estudio"
               fill
               className="object-cover"
@@ -21,11 +21,11 @@ export default function AboutSection() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Soy Ángel Fernández, artista y pintor con más de 15 años de experiencia
+                Soy Ángel Fernández, artista y pintor con más de 30 años de experiencia
                 creando obras que capturan la belleza del mundo que nos rodea.
               </p>
               <p>
-                Mi formación comenzó en la Escuela de Bellas Artes de Madrid, donde descubrí
+                Mi formación comenzó como autodidacta, donde descubrí
                 mi pasión por las técnicas clásicas. Desde entonces, he explorado diversos
                 estilos, desde el realismo hasta la abstracción.
               </p>
@@ -36,7 +36,7 @@ export default function AboutSection() {
             </div>
             <div className="mt-8 flex gap-8">
               <div>
-                <p className="font-playfair text-3xl text-black">15+</p>
+                <p className="font-playfair text-3xl text-black">30+</p>
                 <p className="text-sm text-gray-500">Años de experiencia</p>
               </div>
               <div>

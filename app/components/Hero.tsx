@@ -8,7 +8,7 @@ export default function Hero() {
         </h1>
         <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
           Creando arte que emociona y transforma espacios. Especializado en pintura al óleo,
-          acuarela y técnicas mixtas desde hace más de 15 años.
+          acuarela y técnicas mixtas desde hace más de 30 años.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="#galeria" className="px-8 py-4 bg-black text-white hover:bg-gray-800 transition-colors">

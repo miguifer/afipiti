@@ -55,39 +55,32 @@ export default function ContactSection() {
         <div className="grid md:grid-cols-2 gap-16">
           <div>
             <h3 className="font-playfair text-2xl mb-6">
-              ¿Tienes un proyecto en mente?
+              ¿Quieres ponerte en contacto conmigo?
             </h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              Estaré encantado de escuchar tus ideas y crear algo especial para ti.
               No dudes en contactarme para consultas, encargos o colaboraciones.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <i className="fa-solid fa-envelope text-lg w-5"></i>
-                <a href="mailto:contacto@alejandrovega.art" className="hover:text-gray-600 transition-colors">
-                  contacto@alejandrovega.art
+                <a href="mailto:contacto@afipiti.com" className="hover:text-gray-600 transition-colors">
+                  contacto@afipiti.com
                 </a>
               </div>
               <div className="flex items-center gap-4">
                 <i className="fa-solid fa-phone text-lg w-5"></i>
-                <a href="tel:+34600123456" className="hover:text-gray-600 transition-colors">
-                  +34 600 123 456
+                <a href="tel:+34659893445" className="hover:text-gray-600 transition-colors">
+                  +34 659 893 445
                 </a>
               </div>
               <div className="flex items-center gap-4">
                 <i className="fa-solid fa-location-dot text-lg w-5"></i>
-                <span>Madrid, España</span>
+                <span>Logroño, La Rioja, España</span>
               </div>
             </div>
             <div className="flex gap-4 mt-8">
-              <a href="#" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-colors">
+              <a href="https://www.instagram.com/angelfernandez2158/" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-colors">
                 <i className="fa-brands fa-instagram"></i>
-              </a>
-              <a href="#" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-colors">
-                <i className="fa-brands fa-facebook-f"></i>
-              </a>
-              <a href="#" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-colors">
-                <i className="fa-brands fa-x-twitter"></i>
               </a>
             </div>
           </div>
@@ -135,7 +128,7 @@ export default function ContactSection() {
                 value={formData.mensaje}
                 onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
                 className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors resize-none"
-                placeholder="Cuéntame sobre tu proyecto..."
+                placeholder="Cuéntame..."
               ></textarea>
             </div>
             <button
