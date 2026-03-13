@@ -58,7 +58,7 @@ export default function ContactSection() {
               ¿Quieres ponerte en contacto conmigo?
             </h3>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              No dudes en contactarme para consultas, encargos o colaboraciones.
+              No dudes en contactarme para cualquier consulta.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-4">

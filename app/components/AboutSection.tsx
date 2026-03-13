@@ -34,20 +34,6 @@ export default function AboutSection() {
                 que no solo decoren espacios, sino que transformen emociones y cuenten historias.
               </p>
             </div>
-            <div className="mt-8 flex gap-8">
-              <div>
-                <p className="font-playfair text-3xl text-black">30+</p>
-                <p className="text-sm text-gray-500">Años de experiencia</p>
-              </div>
-              <div>
-                <p className="font-playfair text-3xl text-black">200+</p>
-                <p className="text-sm text-gray-500">Obras creadas</p>
-              </div>
-              <div>
-                <p className="font-playfair text-3xl text-black">50+</p>
-                <p className="text-sm text-gray-500">Exposiciones</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

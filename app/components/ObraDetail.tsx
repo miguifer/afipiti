@@ -34,7 +34,7 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Imagen con zoom interactivo */}
-          <div 
+          <div
             ref={imageContainerRef}
             className="aspect-4/5 bg-gray-100 relative cursor-zoom-in overflow-hidden"
             onMouseMove={handleMouseMove}
@@ -92,7 +92,7 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">Estado</p>
                   <p className={`font-medium ${obra.disponible ? 'text-green-600' : 'text-red-500'}`}>
-                    {obra.disponible ? 'Disponible' : 'Vendida'}
+                    {obra.disponible ? 'Disponible' : 'No disponible'}
                   </p>
                 </div>
               </div>
@@ -118,12 +118,12 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
 
             {!obra.disponible && (
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                <p className="text-gray-600">Esta obra ya ha sido vendida. Contacta conmigo para encargos similares.</p>
+                <p className="text-gray-600">Esta obra pertenece a una colección particular.</p>
                 <Link
                   href="/#contacto"
                   className="px-8 py-4 border border-black hover:bg-black hover:text-white transition-colors"
                 >
-                  Encargar obra similar
+                  Contacta
                 </Link>
               </div>
             )}
@@ -133,7 +133,7 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
 
       {/* Modal para ver imagen completa */}
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
           onClick={closeModal}
         >
@@ -145,7 +145,7 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
             <i className="fa-solid fa-xmark text-3xl"></i>
           </button>
 
-          <div 
+          <div
             className="relative w-full h-full max-w-6xl max-h-[95vh]"
             onClick={(e) => e.stopPropagation()}
           >
