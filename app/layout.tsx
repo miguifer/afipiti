@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
+        <meta name="google-site-verification" content="Sqw-eDS4sWjm9dwfjq2uICNP8e_bQ07Z5sDOx6yui0w" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
