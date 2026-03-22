@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+# Bloquear carpetas técnicas y archivos innecesarios
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+Disallow: /favicon.ico
+Disallow: /*.map$
+Sitemap: https://afipiti.com/sitemap.xml

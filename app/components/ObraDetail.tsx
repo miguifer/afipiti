@@ -44,7 +44,7 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
           >
             <Image
               src={obra.imageUrl}
-              alt={obra.titulo}
+              alt={`Obra: ${obra.titulo} de Ángel Fernández`}
               fill
               className="object-contain transition-transform duration-200"
               style={{
@@ -52,7 +52,8 @@ export default function ObraDetail({ obra }: ObraDetailProps) {
                 transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%`
               }}
               sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
+              loading="lazy"
+              priority={false}
             />
             {/* Indicador de clic */}
             <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 rounded text-sm flex items-center gap-2 opacity-70">
