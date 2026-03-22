@@ -79,7 +79,7 @@ export default function ContactSection() {
               </div>
             </div>
             <div className="flex gap-4 mt-8">
-              <a href="https://www.instagram.com/angelfernandez2158/" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:border-black hover:bg-black hover:text-white transition-colors">
+              <a href="https://www.instagram.com/angelfernandez2158/" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
                 <i className="fa-brands fa-instagram"></i>
               </a>
             </div>

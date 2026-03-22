@@ -40,9 +40,11 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lato.variable} antialiased`}
       >
-        {children}
-        <Analytics />
-        <SpeedInsights />
+        <main>
+          {children}
+          <Analytics />
+          <SpeedInsights />
+        </main>
       </body>
     </html>
   );
