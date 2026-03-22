@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: obra.descripcion.substring(0, 160),
       url: `https://afipiti.com/obra/${obra._id}`,
       images: [
-        obra.imagenDestacada ? obra.imagenDestacada : "/logo.jpg"
+        obra.imageUrl ? obra.imageUrl : "/logo.jpg"
       ],
       type: "article",
     },
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${obra.titulo} | Ángel Fernández`,
       description: obra.descripcion.substring(0, 160),
-      images: [obra.imagenDestacada ? obra.imagenDestacada : "/logo.jpg"],
+      images: [obra.imageUrl ? obra.imageUrl : "/logo.jpg"],
     },
   };
 }
@@ -67,7 +67,7 @@ export default async function ObraPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "VisualArtwork",
     "name": obra.titulo,
-    "image": obra.imagenDestacada ? obra.imagenDestacada : "/logo.jpg",
+    "image": obra.imageUrl ? obra.imageUrl : "/logo.jpg",
     "description": obra.descripcion,
     "creator": {
       "@type": "Person",
