@@ -29,8 +29,6 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
-        <title>Ángel Fernández | Artista & Pintor</title>
-        <meta name="description" content="Artista profesional especializado en pintura al óleo, acuarela y técnicas mixtas. Retratos personalizados, murales y obras de arte únicas." />
         <meta name="google-site-verification" content="Sqw-eDS4sWjm9dwfjq2uICNP8e_bQ07Z5sDOx6yui0w" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="arte, pintura, artista, óleo, acuarela, murales, retratos, Ángel Fernández, afipiti, Afipiti" />
