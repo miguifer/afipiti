@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getObraById, getObrasRelacionadas } from "@/app/data/obras";
+import { SITE } from "@/app/lib/constants";
 import type { Metadata } from "next";
 import {
   Navbar,
@@ -23,26 +24,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title = `${obra.titulo} | ${SITE.name}`;
+  const description = obra.descripcion.substring(0, 160);
+  const image = obra.imageUrl || SITE.image;
+  const url = `${SITE.url}/obra/${obra._id}`;
+
   return {
-    title: `${obra.titulo} | Ángel Fernández`,
-    description: obra.descripcion.substring(0, 160),
-    alternates: {
-      canonical: `https://afipiti.com/obra/${obra._id}`,
-    },
+    title,
+    description,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${obra.titulo} | Ángel Fernández`,
-      description: obra.descripcion.substring(0, 160),
-      url: `https://afipiti.com/obra/${obra._id}`,
-      images: [
-        obra.imageUrl ? obra.imageUrl : "/logo.jpg"
-      ],
+      title,
+      description,
+      url,
+      images: [image],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${obra.titulo} | Ángel Fernández`,
-      description: obra.descripcion.substring(0, 160),
-      images: [obra.imageUrl ? obra.imageUrl : "/logo.jpg"],
+      title,
+      description,
+      images: [image],
     },
   };
 }
@@ -67,13 +69,13 @@ export default async function ObraPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "VisualArtwork",
     "name": obra.titulo,
-    "image": obra.imageUrl ? obra.imageUrl : "/logo.jpg",
+    "image": obra.imageUrl || SITE.image,
     "description": obra.descripcion,
     "creator": {
       "@type": "Person",
-      "name": "Ángel Fernández"
+      "name": SITE.name,
     },
-    "url": `https://afipiti.com/obra/${obra._id}`
+    "url": `${SITE.url}/obra/${obra._id}`,
   };
 
   return (

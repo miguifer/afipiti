@@ -8,3 +8,6 @@ export { default as ContactSection } from './ContactSection';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as ObraDetail } from './ObraDetail';
 export { default as RelatedObras } from './RelatedObras';
+export { default as MobileMenu } from './MobileMenu';
+export { default as ImageModal } from './ImageModal';
+export { default as ZoomableImage } from './ZoomableImage';

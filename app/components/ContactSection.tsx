@@ -1,6 +1,9 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { SITE } from '@/app/lib/constants';
+import { SectionHeader, FormField, StatusMessage, ContactInfoItem } from '@/app/components/ui';
+import { EnvelopeIcon, PhoneIcon, LocationIcon, InstagramIcon } from '@/app/components/icons';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -46,12 +49,7 @@ export default function ContactSection() {
   return (
     <section id="contacto" className="py-24 px-6 bg-gray-50">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-black uppercase tracking-[0.2em] text-sm mb-4">Hablemos</p>
-          <h2 className="font-playfair text-4xl md:text-5xl font-semibold">
-            Contacto
-          </h2>
-        </div>
+        <SectionHeader subtitle="Hablemos" title="Contacto" />
         <div className="grid md:grid-cols-2 gap-16">
           <div>
             <h3 className="font-playfair text-2xl mb-6">
@@ -61,76 +59,65 @@ export default function ContactSection() {
               No dudes en contactarme para cualquier consulta.
             </p>
             <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <i className="fa-solid fa-envelope text-lg w-5"></i>
-                <a href="mailto:contacto@afipiti.com" className="hover:text-gray-600 transition-colors">
-                  contacto@afipiti.com
+              <ContactInfoItem icon={<EnvelopeIcon className="w-5 h-5" />}>
+                <a href={`mailto:${SITE.email}`} className="hover:text-gray-600 transition-colors">
+                  {SITE.email}
                 </a>
-              </div>
-              <div className="flex items-center gap-4">
-                <i className="fa-solid fa-phone text-lg w-5"></i>
-                <a href="tel:+34659893445" className="hover:text-gray-600 transition-colors">
-                  +34 659 893 445
+              </ContactInfoItem>
+              <ContactInfoItem icon={<PhoneIcon className="w-5 h-5" />}>
+                <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="hover:text-gray-600 transition-colors">
+                  {SITE.phone}
                 </a>
-              </div>
-              <div className="flex items-center gap-4">
-                <i className="fa-solid fa-location-dot text-lg w-5"></i>
-                <span>Logroño, La Rioja, España</span>
-              </div>
+              </ContactInfoItem>
+              <ContactInfoItem icon={<LocationIcon className="w-5 h-5" />}>
+                <span>{SITE.location}</span>
+              </ContactInfoItem>
             </div>
             <div className="flex gap-4 mt-8">
-              <a href="https://www.instagram.com/angelfernandez2158/" className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-                <i className="fa-brands fa-instagram"></i>
+              <a href={SITE.instagram} className="w-10 h-10 border border-gray-300 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+                <InstagramIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
           <form onSubmit={handleSubmit} className="space-y-6">
             {status === 'success' && (
-              <div className="p-4 bg-green-50 border border-green-200 text-green-800">
+              <StatusMessage variant="success">
                 ¡Mensaje enviado correctamente! Te responderé pronto.
-              </div>
+              </StatusMessage>
             )}
             {status === 'error' && (
-              <div className="p-4 bg-red-50 border border-red-200 text-red-800">
+              <StatusMessage variant="error">
                 {errorMessage}
-              </div>
+              </StatusMessage>
             )}
-            <div>
-              <label htmlFor="nombre" className="block text-sm mb-2">Nombre</label>
-              <input
-                type="text"
-                id="nombre"
-                required
-                value={formData.nombre}
-                onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
-                placeholder="Tu nombre"
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm mb-2">Email</label>
-              <input
-                type="email"
-                id="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors"
-                placeholder="tu@email.com"
-              />
-            </div>
-            <div>
-              <label htmlFor="mensaje" className="block text-sm mb-2">Mensaje</label>
-              <textarea
-                id="mensaje"
-                rows={4}
-                required
-                value={formData.mensaje}
-                onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
-                className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-black outline-none transition-colors resize-none"
-                placeholder="Cuéntame..."
-              ></textarea>
-            </div>
+            <FormField
+              label="Nombre"
+              id="nombre"
+              type="text"
+              required
+              value={formData.nombre}
+              onChange={(e) => setFormData({ ...formData, nombre: (e.target as HTMLInputElement).value })}
+              placeholder="Tu nombre"
+            />
+            <FormField
+              label="Email"
+              id="email"
+              type="email"
+              required
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: (e.target as HTMLInputElement).value })}
+              placeholder="tu@email.com"
+            />
+            <FormField
+              as="textarea"
+              label="Mensaje"
+              id="mensaje"
+              rows={4}
+              required
+              value={formData.mensaje}
+              onChange={(e) => setFormData({ ...formData, mensaje: (e.target as HTMLTextAreaElement).value })}
+              placeholder="Cuéntame..."
+            />
             <button
               type="submit"
               disabled={status === 'loading'}
