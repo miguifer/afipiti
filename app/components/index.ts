@@ -1,6 +1,7 @@
 export { default as Navbar } from './Navbar';
 export { default as Footer } from './Footer';
 export { default as Hero } from './Hero';
+export { default as HeroSlider } from './HeroSlider';
 export { default as ObraCard } from './ObraCard';
 export { default as GalleryGrid } from './GalleryGrid';
 export { default as AboutSection } from './AboutSection';

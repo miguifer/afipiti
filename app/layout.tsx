@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Sora, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { SITE } from "@/app/lib/constants";
+import SmoothScroll from "@/app/components/SmoothScroll";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const playfair = Sora({
   variable: "--font-playfair",
   subsets: ["latin"],
 });
 
-const lato = Lato({
+const lato = Inter({
   variable: "--font-lato",
-  weight: ["300", "400", "700"],
   subsets: ["latin"],
 });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es">
       <head>
         <meta name="google-site-verification" content="Sqw-eDS4sWjm9dwfjq2uICNP8e_bQ07Z5sDOx6yui0w" />
         <meta name="robots" content="index, follow" />
@@ -63,6 +63,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lato.variable} antialiased`}
       >
+        <SmoothScroll />
         <main id="main-content" role="main">
           {children}
           <Analytics />
