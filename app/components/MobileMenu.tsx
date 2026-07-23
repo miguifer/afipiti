@@ -22,7 +22,7 @@ export default function MobileMenu({ isOpen, items, linkPrefix, onClose }: Mobil
       }`}
     >
       <div
-        className={`absolute inset-0 bg-white/95 backdrop-blur-lg transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-black transition-opacity duration-500 ${
           isOpen ? "opacity-100" : "opacity-0"
         }`}
         onClick={onClose}
@@ -35,7 +35,7 @@ export default function MobileMenu({ isOpen, items, linkPrefix, onClose }: Mobil
               key={item.href}
               href={`${linkPrefix}${item.href}`}
               onClick={onClose}
-              className={`text-4xl font-medium text-black hover:text-gray-500 transition-all duration-300 py-3 px-6 transform ${
+              className={`text-4xl font-medium text-white hover:text-gray-400 transition-all duration-300 py-3 px-6 transform ${
                 isOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-4"
@@ -50,20 +50,14 @@ export default function MobileMenu({ isOpen, items, linkPrefix, onClose }: Mobil
         </nav>
 
         <div
-          className={`absolute bottom-24 left-1/2 -translate-x-1/2 transition-all duration-700 delay-300 ${
-            isOpen ? "w-16 opacity-100" : "w-0 opacity-0"
-          }`}
-        >
-          <div className="h-px bg-gray-300" />
-        </div>
-
-        <div
-          className={`absolute bottom-12 flex gap-8 transition-all duration-500 ${
+          className={`absolute bottom-12 transition-all duration-500 ${
             isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: isOpen ? "400ms" : "0ms" }}
         >
-          <span className="text-sm text-gray-500">Arte & Pintura</span>
+          <span className="text-sm text-gray-500">
+            © {new Date().getFullYear()} Todos los derechos reservados
+          </span>
         </div>
       </div>
     </div>

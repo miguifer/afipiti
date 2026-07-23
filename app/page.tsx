@@ -9,14 +9,14 @@ import {
 } from "@/app/components";
 
 export default async function Home() {
-  const obras = await fetchObras(12);
+  const obras = await fetchObras(100);
 
   return (
     <div className="min-h-screen bg-white font-lato">
       <Navbar />
       <Hero />
-      <GalleryGrid obras={obras} />
       <AboutSection />
+      <GalleryGrid obras={obras} />
       <ContactSection />
       <Footer />
     </div>
